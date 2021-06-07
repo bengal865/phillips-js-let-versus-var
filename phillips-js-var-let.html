@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Phillips: JS VAR versus LET Tutorial</title>
+        <style>
+        .letb {
+            background-color: #47B3C0;
+            border: none;
+            color: #fff;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+            .varb {
+                background-color: #519A61;
+                border: none;
+                color: #fff;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+        }
+        
+            .anob {
+                background-color: #B1A346;
+                border: none;
+                color: #fff;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+        }
+        
+        .letb:hover, .varb:hover, .anob:hover { background-color: orange; color: #000; }
+        
+        </style>
+
+    </head>
+    <body>
+        <h1>JS Variables &amp; Scope</h1>
+
+        <div class = "center-container">
+            <button class = "letb" id = "letkeyword">let keyword</button>
+            <button class = "varb" id = "varkeyword">var keyword</button>
+            <button class = "anob" id = "another">another function</button>
+        </div>
+
+        <script>
+        var x = 50; // Act as variables with GLOBAL scope
+        var y = "Miami"; // Global scope
+
+
+        function letKeyword(){ // With let keyword, scope of variable is limited to its block in the code */
+            let x = 10;
+            let y = "Tampa";
+
+            if (x > 5){
+                let x = 20;
+                let y = "Orlando";
+            } // End of IF statement
+
+            console.log(`Using let: ${x}`);
+            console.log(`Using let: ${y}`);
+        } // End of letKeyword function
+
+        // Call the letKeyword function
+        document.getElementById('letkeyword').addEventListener('click', letKeyword);
+
+
+        function varKeyword(){
+            // Using VAR keyword has a WIDER scope than when you use the let keyword; in this case, scope is within the function
+            var x = 10;
+            var y = "Tampa";
+
+            if (x > 5){
+                var x = 20;
+                var y = "Orlando";
+            } // End of IF statement
+
+            console.log(`Using var: ${x}`);
+            console.log(`Using var: ${y}`);
+        } // End of varKeyword function
+
+        // Call the varKeyword function
+        document.getElementById('varkeyword').addEventListener('click', varKeyword);
+
+        function anotherFunction(){
+            console.log(`Using variable outside of function (global scope): ${x}`);
+            console.log(`Using variable outside of function (global scope): ${y}`);
+        }
+
+        document.getElementById('another').addEventListener('click', anotherFunction);
+    
+        </script>
+    </body>
+</html>
